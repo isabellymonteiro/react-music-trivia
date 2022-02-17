@@ -18,5 +18,6 @@ Clone this repo and in the project directory, run:
 ## TO DO (work in progress)
 
 * allow user to choose difficulty: easy, medium or hard;
-* fix unicode (json) instead of literal coming from api; 
+* fix unicode (json) instead of literal coming from api;
 * at the end, show final score and allow user to play again (without the questions);
+* add responsiveness.
