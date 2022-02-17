@@ -3,6 +3,11 @@
 This app is a music trivia game in which you should try to choose the right answer.\
 It consumes the API [Open Trivia DB](https://opentdb.com/api_config.php) to fetch the questions and answers.
 
+
+## Play
+
+Deployed in Netfly: [Music Trivia App](https://admiring-khorana-3a012e.netlify.app/)
+
 ## Try it yourself
 
 Clone this repo and in the project directory, run:
