@@ -1,5 +1,9 @@
 import styled, { createGlobalStyle } from 'styled-components'
 
+interface Props {
+  clicked: boolean
+}
+
 export const GlobalStyle = createGlobalStyle`
   html {
     height: 100%;
@@ -48,6 +52,30 @@ export const TitleStyle = styled.div`
 
   img {
     margin-right: 10px;
+  }
+`
+
+export const DifficultyCardStyle = styled.div`
+  p {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+  }
+`
+
+export const DifficultyButton = styled.button<Props>`
+  cursor: pointer;
+  color: #263238;
+  user-select: none;
+  font-size: 18px;
+  width: 100%;
+  height: 40px;
+  margin: 5px 0;
+  border: 0;
+  border-radius: 10px;
+  background: ${({ clicked }) => clicked ? '#ffd966' : '#90a4ae'};
+  :hover {
+    opacity: 0.8;
   }
 `
 

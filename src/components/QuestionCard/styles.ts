@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 interface Props {
-  correct: boolean;
-  clicked: boolean;
+  correct: boolean
+  clicked: boolean
 }
 
 export const QuestionCardStyle = styled.div`

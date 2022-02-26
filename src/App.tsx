@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Difficulty, fetchQuestions, QuestionState } from './api'
 import QuestionCard from './components/QuestionCard'
-import { ButtonStyle, GlobalStyle, TitleStyle, Wrapper } from './styles'
+import { ButtonStyle, DifficultyCardStyle, DifficultyButton, GlobalStyle, TitleStyle, Wrapper } from './styles'
 import StartIcon from './icons/start.svg'
 import LogoIcon from './icons/triviaLogo.svg'
 import NextIcon from './icons/next.svg'
@@ -22,6 +22,7 @@ const App = () => {
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([])
   const [score, setScore] = useState(0)
   const [gameOver, setGameOver] = useState(true)
+  const [difficulty, setDifficulty] = useState<Difficulty | undefined>()
 
   const startTrivia = async() => {
     setLoading(true)
@@ -30,7 +31,7 @@ const App = () => {
     try {
       const newQuestions = await fetchQuestions(
         TOTAL_QUESTIONS,
-        Difficulty.EASY
+        difficulty
       )
       setQuestions(newQuestions)
       setScore(0)
@@ -75,10 +76,20 @@ const App = () => {
           <h1>MUSIC TRIVIA</h1>
         </TitleStyle>
         {(gameOver || userAnswers.length === TOTAL_QUESTIONS) && (
-          <ButtonStyle onClick={startTrivia}>
-            <img className='start' src={StartIcon} alt='Start trivia'></img>
-            START
-          </ButtonStyle>
+          <>
+            <DifficultyCardStyle>
+              <p>CHOOSE DIFFICULTY:</p>
+              <DifficultyButton clicked={difficulty===Difficulty.EASY} onClick={() => setDifficulty(Difficulty.EASY)}>EASY</DifficultyButton>
+              <DifficultyButton clicked={difficulty===Difficulty.MEDIUM} onClick={() => setDifficulty(Difficulty.MEDIUM)}>MEDIUM</DifficultyButton>
+              <DifficultyButton clicked={difficulty===Difficulty.HARD} onClick={() => setDifficulty(Difficulty.HARD)}>HARD</DifficultyButton>
+            </DifficultyCardStyle>
+            {difficulty && 
+              <ButtonStyle onClick={startTrivia}>
+                <img className='start' src={StartIcon} alt='Start trivia'></img>
+                START
+              </ButtonStyle>
+            }
+          </>
         )}
         {(!gameOver && !loading) && <p className='score'>SCORE: {score}</p>}
         {loading && <p className='loading'>LOADING...</p>}
