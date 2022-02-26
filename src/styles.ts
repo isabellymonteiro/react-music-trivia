@@ -56,11 +56,22 @@ export const TitleStyle = styled.div`
 `
 
 export const DifficultyCardStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #34495e;
+  width: 300px;
+  height: 240px; 
+  border-radius: 40px;
+  border: 1px solid #ffc107;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+
   p {
     color: #fff;
     font-size: 18px;
     font-weight: 500;
-  }
+    margin: 20px 0;
+    }
 `
 
 export const DifficultyButton = styled.button<Props>`
@@ -68,7 +79,7 @@ export const DifficultyButton = styled.button<Props>`
   color: #263238;
   user-select: none;
   font-size: 18px;
-  width: 100%;
+  width: 200px;
   height: 40px;
   margin: 5px 0;
   border: 0;
