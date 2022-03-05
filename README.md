@@ -18,6 +18,6 @@ Clone this repo and in the project directory, run:
 ## TO DO (work in progress)
 
 - [x] allow user to choose difficulty: easy, medium or hard;
+- [x] at the end, show final score and button to play again;
 - [ ] fix unicode (json) instead of literal coming from api;
-- [ ] at the end, show final score and button to play again;
 - [ ] add responsiveness.
