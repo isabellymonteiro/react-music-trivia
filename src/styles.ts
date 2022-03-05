@@ -39,7 +39,17 @@ export const Wrapper = styled.div`
   .loading {
     align-self: center;
   }
-  
+
+  .finalScore {
+    font-size: 22px;
+    color: #fff;
+    font-weight: 500;
+  }
+
+  .gif {
+    max-width: 400px;
+    max-height: 400px;
+  } 
 `
 
 export const TitleStyle = styled.div`

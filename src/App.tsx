@@ -5,6 +5,10 @@ import { ButtonStyle, DifficultyCardStyle, DifficultyButton, GlobalStyle, TitleS
 import StartIcon from './icons/start.svg'
 import LogoIcon from './icons/triviaLogo.svg'
 import NextIcon from './icons/next.svg'
+import zeroToTwoGif from './gifs/britney.gif'
+import threeToFiveGif from './gifs/beyonce.gif'
+import sixToEightGif from './gifs/haim.gif'
+import nineToTenGif from './gifs/dua.gif' 
 
 export type AnswerObject = {
   question: string
@@ -23,6 +27,8 @@ const App = () => {
   const [score, setScore] = useState(0)
   const [gameOver, setGameOver] = useState(true)
   const [difficulty, setDifficulty] = useState<Difficulty | undefined>()
+  const [showFinalScore, setShowFinalScore] = useState(false)
+  const [gif, setGif] = useState('')
 
   const startTrivia = async() => {
     setLoading(true)
@@ -62,8 +68,28 @@ const App = () => {
     const nextQuestion = number + 1
     if (nextQuestion === TOTAL_QUESTIONS) {
       setGameOver(true)
+      setShowFinalScore(true)
+      prepareGif()
     } else {
       setNumber(nextQuestion)
+    }
+  }
+
+  const playAgain = () => {
+    setShowFinalScore(false)
+    setDifficulty(undefined)
+    setGif('')
+  }
+
+  const prepareGif = () => {
+    if (score >= 99) {
+      setGif(nineToTenGif) 
+    } else if (score >= 6) {
+      setGif(sixToEightGif)
+    } else if (score >= 3) {
+      setGif(threeToFiveGif)
+    } else {
+      setGif(zeroToTwoGif)
     }
   }
 
@@ -75,7 +101,14 @@ const App = () => {
           <img src={LogoIcon} alt='Vinyl disc as logo' />
           <h1>MUSIC TRIVIA</h1>
         </TitleStyle>
-        {(gameOver || userAnswers.length === TOTAL_QUESTIONS) && (
+        {showFinalScore &&
+          <>
+            <p className='finalScore'>FINAL SCORE: {score} / {TOTAL_QUESTIONS}</p>
+            <img className='gif' src={gif} alt='Result gif' />
+            <ButtonStyle onClick={playAgain}>Play again</ButtonStyle>
+          </>
+        }
+        {(gameOver && !showFinalScore) && (
           <>
             <DifficultyCardStyle>
               <p>CHOOSE DIFFICULTY:</p>
@@ -105,11 +138,10 @@ const App = () => {
         )}
         {(!gameOver &&
         !loading &&
-        userAnswers.length === number + 1 &&
-        number !== TOTAL_QUESTIONS - 1) &&
+        userAnswers.length === number + 1) &&
           <ButtonStyle onClick={nextQuestion}>
-            NEXT QUESTION
-            <img className='next' src={NextIcon} alt='Next question' />
+            {userAnswers.length === TOTAL_QUESTIONS ? 'SEE RESULT' : 'NEXT QUESTION'}
+            <img className='next' src={NextIcon} alt='Next' />
           </ButtonStyle>
         }
       </Wrapper>
