@@ -19,5 +19,5 @@ Clone this repo and in the project directory, run:
 
 - [x] allow user to choose difficulty: easy, medium or hard;
 - [x] at the end, show final score and button to play again;
+- [x] add responsiveness.
 - [ ] fix unicode (json) instead of literal coming from api;
-- [ ] add responsiveness.
