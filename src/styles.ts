@@ -36,7 +36,7 @@ export const Wrapper = styled.div`
     align-self: start;
     font-weight: 600;
 
-    @media (min-height: 620px)
+    @media (min-height: 660px)
       {
         margin-top: clamp(0px, 8vh, 200px);
       }
