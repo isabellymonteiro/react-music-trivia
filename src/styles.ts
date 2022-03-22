@@ -25,15 +25,21 @@ export const GlobalStyle = createGlobalStyle`
 
 export const Wrapper = styled.div`
   display: flex;
+  height: 100vh;
   flex-direction: column;
   align-items: center;
-
   .score,
   .loading {
+    margin-top: 0;
     color: #90a4ae;
-    font-size: 20px;
+    font-size: clamp(16px, 4vw, 20px);
     align-self: start;
     font-weight: 600;
+
+    @media (min-height: 620px)
+      {
+        margin-top: clamp(0px, 8vh, 200px);
+      }
   }
 
   .loading {
@@ -47,18 +53,16 @@ export const Wrapper = styled.div`
   }
 
   .gif {
-    max-width: 400px;
+    width: 100%;
     max-height: 400px;
   } 
 `
 
 export const TitleStyle = styled.div`
   display: flex;
-  justify-content: center;
-  align-content: center;
   color: #ffc107;
-  font-size: 22px;
-  margin: auto;
+  font-size: clamp(12px, 2vw, 22px);
+  margin-top: 10px;
 
   img {
     margin-right: 10px;
@@ -68,35 +72,48 @@ export const TitleStyle = styled.div`
 export const DifficultyCardStyle = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: clamp(50px, 8vh, 100px);
   align-items: center;
-  background: #34495e;
-  width: 300px;
-  height: 240px; 
+  justify-content: center;
+  background: #34495e; 
   border-radius: 40px;
   border: 1px solid #ffc107;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+  width: clamp(240px, 50vw, 400px);
+  max-height: 400px;
+  padding: 10px 20px 20px 20px;
 
   p {
     color: #fff;
-    font-size: 18px;
+    font-size: clamp(16px, 3vw, 22px);
     font-weight: 500;
     margin: 20px 0;
     }
+
+  @media (min-height: 620px)
+  {
+     margin-top: clamp(50px, 20vh, 300px);
+  }
 `
 
 export const DifficultyButton = styled.button<Props>`
   cursor: pointer;
   color: #263238;
   user-select: none;
-  font-size: 18px;
-  width: 200px;
-  height: 40px;
+  font-size: clamp(16px, 3vw, 22px);
+  width: 100%;
+  height: clamp(20px, 6vh, 60px);
   margin: 5px 0;
   border: 0;
   border-radius: 10px;
   background: ${({ clicked }) => clicked ? '#ffd966' : '#90a4ae'};
   :hover {
     opacity: 0.8;
+  }
+
+  @media (min-width: 700px)
+  {
+    font-size: 24px;
   }
 `
 

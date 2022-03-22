@@ -6,7 +6,7 @@ interface Props {
 }
 
 export const QuestionCardStyle = styled.div`
-  width: 800px;
+  max-width: 800px;
   max-height: 400px;
   background: #34495e;
   border-radius: 40px;
@@ -17,7 +17,7 @@ export const QuestionCardStyle = styled.div`
   padding: 20px;
 
   p {
-    font-size: 20px;
+    font-size: clamp(16px, 3vw, 26px);
   }
 
   .questionNumber {
@@ -28,14 +28,13 @@ export const QuestionCardStyle = styled.div`
 `
 
 export const ButtonStyle = styled.div<Props>`
-
   button {
     cursor: pointer;
     color: #263238;
     user-select: none;
-    font-size: 18px;
+    font-size: clamp(16px, 3vw, 24px);
     width: 100%;
-    height: 40px;
+    height: clamp(20px, 6vh, 40px);
     margin: 5px 0;
     border: 0;
     border-radius: 10px;
