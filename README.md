@@ -6,7 +6,7 @@ It consumes the API [Open Trivia DB](https://opentdb.com/api_config.php) to fetc
 
 ## Play
 
-Deployed on Netfly: [Music Trivia App](https://admiring-khorana-3a012e.netlify.app/)
+Deployed on Netlify: [Music Trivia App](https://admiring-khorana-3a012e.netlify.app/)
 
 ## Try it yourself
 
